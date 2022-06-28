@@ -5,9 +5,11 @@
 // 
 
 import UIKit
+import CoreLocation
 
-final class MainViewController: UIViewController {
+final class MainViewController: UIViewController, CLLocationManagerDelegate {
   private lazy var baseView = ListView(frame: view.bounds)
+  var locationManager = CLLocationManager()
   private var diarys: [Diary]? {
     didSet {
       DispatchQueue.main.async {
@@ -24,6 +26,7 @@ final class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
+    makelocation()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +59,26 @@ final class MainViewController: UIViewController {
     let detailViewController = WriteViewController()
     navigationController?.pushViewController(detailViewController, animated: true)
   }
+  
+  private func makelocation() {
+    locationManager.delegate = self
+    
+    //포그라운드 상태에서 위치 추적 권한 요청
+    locationManager.requestWhenInUseAuthorization()
+    
+    //배터리에 맞게 권장되는 최적의 정확도
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    
+    //위치업데이트
+    locationManager.startUpdatingLocation()
+
+  }
+  
+  func getData() {
+    netWork.getInfo(<#T##self: netWork##netWork#>)
+  }
+  
+  
 }
 
 // MARK: TableViewDataSource
@@ -100,7 +123,7 @@ extension MainViewController: UITableViewDelegate {
       guard let identifier = self.diarys?[indexPath.row].identifier else {
         return
       }
-
+      
       CoreData.deleteDiary(identifier: identifier)
       self.diarys?.remove(at: indexPath.row)
       completion(true)
