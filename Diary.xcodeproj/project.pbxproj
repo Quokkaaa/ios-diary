@@ -40,6 +40,7 @@
 		867CAD00285B14FA00A04F1F /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		86F67608286332DA00F675E8 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		86FB0331286ACE0A002A2834 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		86FB0333286B361E002A2834 /* DiaryModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DiaryModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		90BC7C1B1D0558C345CE0253 /* Pods-Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.debug.xcconfig"; path = "Target Support Files/Pods-Diary/Pods-Diary.debug.xcconfig"; sourceTree = "<group>"; };
 		AB0D9A022859AB8C00235064 /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
 		AB0D9A042859ABB200235064 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
@@ -669,9 +670,10 @@
 		AB6B32852861B76A00E777CE /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				86FB0333286B361E002A2834 /* DiaryModel 2.xcdatamodel */,
 				AB6B32862861B76A00E777CE /* DiaryModel.xcdatamodel */,
 			);
-			currentVersion = AB6B32862861B76A00E777CE /* DiaryModel.xcdatamodel */;
+			currentVersion = 86FB0333286B361E002A2834 /* DiaryModel 2.xcdatamodel */;
 			path = CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

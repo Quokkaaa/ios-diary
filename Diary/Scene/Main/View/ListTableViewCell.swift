@@ -36,6 +36,11 @@ final class ListTableViewCell: UITableViewCell, Identifiable {
     return label
   }()
   
+  let wetherImage: UIImageView = {
+    let image = UIImageView()
+    return image
+  }()
+  
   private let descriptionLabel: UILabel = {
     let label = UILabel()
     label.font = UIFont.preferredFont(forTextStyle: .footnote)
@@ -56,12 +61,13 @@ final class ListTableViewCell: UITableViewCell, Identifiable {
     dateLabel.text = diary.createdDate?.setKoreaDateFormat(dateFormat: .yearMonthDay)
     titleLabel.text = diary.title
     descriptionLabel.text = diary.content
+    wetherImage.image = diary.
   }
   
   private func configureUI() {
     contentView.addSubview(mainStackView)
     mainStackView.addArrangedSubviews(titleLabel, bottomStackView)
-    bottomStackView.addArrangedSubviews(dateLabel, descriptionLabel)
+    bottomStackView.addArrangedSubviews(dateLabel, wetherImage, descriptionLabel)
   
     NSLayoutConstraint.activate([
       mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

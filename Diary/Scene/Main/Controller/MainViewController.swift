@@ -9,7 +9,8 @@ import CoreLocation
 
 final class MainViewController: UIViewController, CLLocationManagerDelegate {
   private lazy var baseView = ListView(frame: view.bounds)
-  var locationManager = CLLocationManager()
+  private var locationManager = CLLocationManager()
+  private var netWork = NetWork()
   private var diarys: [Diary]? {
     didSet {
       DispatchQueue.main.async {
@@ -27,6 +28,7 @@ final class MainViewController: UIViewController, CLLocationManagerDelegate {
     super.viewDidLoad()
     configureUI()
     makelocation()
+    getData()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -71,14 +73,22 @@ final class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //위치업데이트
     locationManager.startUpdatingLocation()
+  }
 
-  }
-  
   func getData() {
-    netWork.getInfo(<#T##self: netWork##netWork#>)
-  }
-  
-  
+    guard let lat = locationManager.location?.coordinate.latitude, let lon = locationManager.location?.coordinate.longitude else {
+      return 
+    }
+    
+    netWork.fetchData(url: Endpoint.makeURL(lat: lat, lon: lon), completionHandler: { result in
+      switch result {
+      case .success(let data):
+        print(data)
+      case .failure(let error):
+        print(error)
+      }
+    })
+}
 }
 
 // MARK: TableViewDataSource
