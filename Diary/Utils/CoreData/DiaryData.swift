@@ -17,7 +17,6 @@ final class DiaryData {
     diary.content = content
     diary.identifier = identifier
     diary.createdDate = date
-    diary.main = main
     diary.iconID = iconID
     
     CoredataManager.shared.save()

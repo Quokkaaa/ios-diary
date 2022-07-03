@@ -19,10 +19,7 @@ extension Diary {
   @NSManaged public var createdDate: Date?
   @NSManaged public var identifier: String?
   @NSManaged public var title: String?
-  @NSManaged public var main: String?
   @NSManaged public var iconID: String?
-
-  
 }
 
 extension Diary : Identifiable {}
