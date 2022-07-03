@@ -61,6 +61,14 @@ final class ListTableViewCell: UITableViewCell, Identifiable {
     fatalError("init(coder:) has not been implemented")
   }
   
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    titleLabel.text = nil
+    dateLabel.text = nil
+    iconImageView.image = nil
+    descriptionLabel.text = nil
+  }
+  
   private func uploadIconImage(_ iconID: String?) {
     guard let iconID = iconID else {
       return
